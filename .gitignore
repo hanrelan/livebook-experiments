@@ -1,0 +1,5 @@
+# nix stuff
+.envrc
+.direnv/
+.nix-hex/
+.nix-mix/
