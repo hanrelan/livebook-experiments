@@ -12,6 +12,10 @@ Mix.install([
 
 ## Intro
 
+*Note: I contributed a cleaned up version of this notebook to the Axon repo. I recommend looking at that instead. It's available [here](https://github.com/elixir-nx/axon/blob/main/notebooks/generative/mnist_autoencoder_using_kino.livemd)*
+
+<!-- livebook:{"break_markdown":true} -->
+
 The goal of this Notebook is to build a Variational Autoencoder from scratch using Elixir's Axon machine learning library and Livebook. This is my first time using Axon, Livebook and building a VAE, so you'll be following along as I experiment to learn the framework, workflows and VAEs.
 
 ## Data loading
@@ -162,6 +166,8 @@ params =
   |> Axon.Loop.trainer(:mean_squared_error, Axon.Optimizers.adamw(0.001))
   |> Axon.Loop.validate(model, test_data)
   |> Axon.Loop.run(train_data, %{}, epochs: 5, compiler: EXLA)
+
+:ok
 ```
 
 Now that I have a model that theoretically has learned *something*, let's see what it's learned by running it on some images from the test set. I'll try to use Kino to allow me to select the image it'll run against. To avoid losing the params that took a while to train, I'll create another branch so I can experiment with the params and stop execution when needed without having to retrain.
